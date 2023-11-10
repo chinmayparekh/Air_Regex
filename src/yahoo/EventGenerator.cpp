@@ -33,6 +33,7 @@
 
 #include <mpi.h>
 #include <unistd.h>
+#include <chrono>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -231,10 +232,13 @@ string EventGenerator::generate_seq()
 	{
 		sequence += alphabet[rand() % 26];
 	}
-	// sequence = "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWX";
 	return sequence;
 }
-
+long int EventGenerator::timeSinceEpochMillisec()
+{
+	using namespace std::chrono;
+	return duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
+}
 void EventGenerator::getNextMessage(EventDG *event, WrapperUnit *wrapper_unit,
 									Message *message, int events_per_msg, long int time_now)
 {
@@ -255,7 +259,9 @@ void EventGenerator::getNextMessage(EventDG *event, WrapperUnit *wrapper_unit,
 		string seq = generate_seq();
 		// memcpy(event->ad_id, ad_ids[myrandom(0, 999)].c_str(), 36);
 		memcpy(event->ad_id, seq.c_str(), 50);
-		event->event_time = time_now + (999 - i % 1000); // uniformly distribute event times among current message window, upper first
+		event->event_time = timeSinceEpochMillisec();
+		// cout << "in generator : " << event->event_time << endl;
+		// cout << "size of" << sizeof(time_t) << endl;// uniformly distribute event times among current message window, upper first
 		// event->event_time = (long int) (MPI_Wtime() * 1000);
 
 		int rand_val = myrandom(0, 2);

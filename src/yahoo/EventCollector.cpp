@@ -34,7 +34,8 @@
 #include <unistd.h>
 #include "../serialization/Serialization.hpp"
 #include "EventCollector.hpp"
-
+#include <bits/stdc++.h>
+#include <chrono>
 using namespace std;
 
 EventCollector::EventCollector(int tag, int rank, int worldSize) : Vertex(tag, rank, worldSize)
@@ -61,19 +62,24 @@ void EventCollector::batchProcess()
 {
 	D(cout << "EVENTCOLLECTOR->BATCHPROCESS [" << tag << "] @ " << rank << endl;)
 }
-
+long int EventCollector::timeSinceEpochMillisec()
+{
+	using namespace std::chrono;
+	return duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
+}
 void EventCollector::streamProcess(int channel)
 {
 	int w_id = 0;
+
 	D(cout << "EVENTCOLLECTOR->STREAMPROCESS [" << tag << "] @ " << rank
 		   << " IN-CHANNEL " << channel << endl;)
 
 	if (rank == 0)
 	{
 		long int res = 0;
-		time_t start_time = time(0);
-		time_t end_time = start_time + 1;
-
+		time_t start_time = timeSinceEpochMillisec();
+		// time_t end_time = start_time + 1;
+		long int max_event_time = LONG_MAX;
 		Message *inMessage;
 		list<Message *> *tmpMessages = new list<Message *>();
 		Serialization sede;
@@ -105,36 +111,54 @@ void EventCollector::streamProcess(int channel)
 				inMessage = tmpMessages->front();
 				tmpMessages->pop_front();
 
-				D(cout << "EVENTCOLLECTOR->POP MESSAGE: TAG [" << tag << "] @ "
-					   << rank << " CHANNEL " << channel << " BUFFER "
-					   << inMessage->size << endl;)
+				// cout << "Aggregating message: TAG [" << tag << "] @ " << rank
+				// 	 << " CHANNEL " << channel << " BUFFER " << inMessage->size
+				// 	 << endl;
 
-				int event_count = inMessage->size / sizeof(EventFT);
-				// cout << "EVENT_COUNT: " << event_count << endl;
+				sede.unwrap(inMessage);
+				// if (inMessage->wrapper_length > 0) {
+				//	sede.unwrapFirstWU(inMessage, &wrapper_unit);
+				//	sede.printWrapper(&wrapper_unit);
+				// }
 
-				int i = 0, count = 0;
+				int offset = sizeof(int) + (inMessage->wrapper_length * sizeof(WrapperUnit));
+
+				int event_count = (inMessage->size - offset) / sizeof(EventFT);
+
+				// cout << "TOTAL EVENT_COUNT: " << res << endl;
+
+				int i = 0, j = 0;
 				while (i < event_count)
 				{
 					res++;
 					sede.YSBdeserializeFT(inMessage, &eventFT,
-										  i * sizeof(EventFT));
-					// sum_latency += eventPC.latency;
-					// count += eventPC.count;
-					//					sede.YSBprintPC(&eventPC);
-					time_t curr_time = time(0);
-					if (curr_time - end_time >= 10)
+										  offset + (i * sizeof(EventFT)));
+					// sede.YSBprintFT(&eventFT);
+					// cout << eventFT.event_time << " " << eventFT.ad_id << endl;
+					if (max_event_time > eventFT.event_time)
 					{
-						// cout << " RELEASING EVENT: join events " << res << "\tevent_time: " << eventFT.event_time
-						// 	 << "\tad_id: " << eventFT.ad_id << endl;
-						cout << "W_ID: " << w_id
-							 << " RANK: " << rank << " " << res << endl;
-						res = 0;
-						end_time = curr_time;
-						w_id++;
-						// cout << "New window end time -" << end_time << endl;
+						max_event_time = eventFT.event_time;
 					}
 					i++;
 				}
+
+				time_t curr_time = timeSinceEpochMillisec();
+				if (curr_time - start_time >= 10000)
+				{
+					time_t now = timeSinceEpochMillisec();
+					// cout << " RELEASING EVENT: join events " << res << "\tevent_time: " << eventFT.event_time
+					// 	 << "\tad_id: " << eventFT.ad_id << endl;
+					double elapsed = difftime(now, max_event_time);
+					// cout << "curr :" << now << " max event time : " << max_event_time << endl;
+					cout << "W_ID: " << w_id
+						 << " RANK: " << rank << " " << res << " " << elapsed << endl;
+					res = 0;
+					start_time = curr_time;
+					w_id++;
+					max_event_time = LONG_MAX;
+					// cout << "New window end time -" << end_time << endl;
+				}
+				
 				// sum_counts += event_count; // count of distinct c_id's processed
 				// num_messages++;
 

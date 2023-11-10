@@ -56,7 +56,7 @@ public:
 	void batchProcess();
 
 	void streamProcess(int channel);
-
+	long int timeSinceEpochMillisec();
 private:
 	std::ofstream datafile;
 

@@ -102,7 +102,7 @@ void SHJoin::streamProcess(int channel)
 
 	// WrapperUnit wrapper_unit;
 	EventFT eventFT;
-	EventJ eventJ;
+	EventFT eventFT1;
 
 	int c = 0;
 
@@ -160,10 +160,13 @@ void SHJoin::streamProcess(int channel)
 				// res++;
 				sede.YSBdeserializeFT(inMessage, &eventFT,
 									  offset + (i * sizeof(EventFT)));
+				// cout << "in join" << eventFT.event_time << " " << eventFT.ad_id << endl;
+
 				sede.YSBserializeFT(&eventFT, outMessage);
 
 				i++;
 			}
+			// cout << "Outside" << res << endl;
 			// temp++;
 			// cout<<"Total = "<<temp<<endl;
 			// temp += event_count;
@@ -173,7 +176,7 @@ void SHJoin::streamProcess(int channel)
 			// temp=0;
 
 			// Replicate data to all subsequent vertices, do not actually reshard the data here
-			int n = 0, listenerBuffer_offset = 0;
+			int n = 0;
 			for (vector<Vertex *>::iterator v = next.begin(); v != next.end();
 				 ++v)
 			{
@@ -182,13 +185,13 @@ void SHJoin::streamProcess(int channel)
 
 				if (PIPELINE)
 				{
-					idx = rank; // calculating the index of the buffer at the listener thread
+
 					// Pipeline mode: immediately copy message into next operator's queue
 					pthread_mutex_lock(&(*v)->listenerMutexes[idx]);
 					(*v)->inMessages[idx].push_back(outMessage);
 
-					D(cout << "SHJOIN->PIPELINE MESSAGE [" << tag << "] #" << c
-						   << " @ " << rank << " IN-CHANNEL " << channel
+					D(cout << "EVENTFILTER->PIPELINE MESSAGE [" << tag << "] #"
+						   << c << " @ " << rank << " IN-CHANNEL " << channel
 						   << " OUT-CHANNEL " << idx << " SIZE "
 						   << outMessage->size << " CAP "
 						   << outMessage->capacity << endl;)
@@ -203,8 +206,8 @@ void SHJoin::streamProcess(int channel)
 					pthread_mutex_lock(&senderMutexes[idx]);
 					outMessages[idx].push_back(outMessage);
 
-					D(cout << "SHJOIN->PUSHBACK MESSAGE [" << tag << "] #" << c
-						   << " @ " << rank << " IN-CHANNEL " << channel
+					D(cout << "EVENTFILTER->PUSHBACK MESSAGE [" << tag << "] #"
+						   << c << " @ " << rank << " IN-CHANNEL " << channel
 						   << " OUT-CHANNEL " << idx << " SIZE "
 						   << outMessage->size << " CAP "
 						   << outMessage->capacity << endl;)

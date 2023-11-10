@@ -162,6 +162,7 @@ void EventFilter::streamProcess(int channel)
 				{ // FILTERING BASED ON EVENT_TYPE
 					// cout << "Pattern found" << endl;
 					eventFT.event_time = eventDG.event_time;
+					// cout << "in filter" << eventFT.event_time << endl;
 					memcpy(eventFT.ad_id, eventDG.ad_id, 51);
 					sede.YSBserializeFT(&eventFT, outMessage); // store filtered events directly in outgoing message!
 															   //					sede.YSBdeserializeFT(outMessage, &eventFT,
