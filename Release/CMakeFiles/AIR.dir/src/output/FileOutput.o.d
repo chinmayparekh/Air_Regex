@@ -1,7 +1,7 @@
 CMakeFiles/AIR.dir/src/output/FileOutput.o: \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/output/FileOutput.cpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/output/FileOutput.cpp \
  /usr/include/stdc-predef.h \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/output/FileOutput.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/output/FileOutput.hpp \
  /usr/include/c++/11/string \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -132,8 +132,8 @@ CMakeFiles/AIR.dir/src/output/FileOutput.o: \
  /usr/include/c++/11/bits/functional_hash.h \
  /usr/include/c++/11/bits/hash_bytes.h \
  /usr/include/c++/11/bits/basic_string.tcc \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/output/Output.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/output/../communication/Window.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/output/Output.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/output/../communication/Window.hpp \
  /usr/include/c++/11/iostream /usr/include/c++/11/ostream \
  /usr/include/c++/11/ios /usr/include/c++/11/exception \
  /usr/include/c++/11/bits/exception_ptr.h \

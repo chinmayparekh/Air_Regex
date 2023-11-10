@@ -1,4 +1,4 @@
-# Install script for directory: /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR
+# Install script for directory: /home/chinmay/chin/semester7/sds/assignment3/AIR
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/Release/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/chinmay/chin/semester7/sds/assignment3/AIR/Release/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

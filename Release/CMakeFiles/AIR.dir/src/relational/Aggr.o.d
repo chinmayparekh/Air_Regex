@@ -1,5 +1,5 @@
 CMakeFiles/AIR.dir/src/relational/Aggr.o: \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/relational/Aggr.cpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/relational/Aggr.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -149,5 +149,5 @@ CMakeFiles/AIR.dir/src/relational/Aggr.o: \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc /usr/include/c++/11/limits \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/relational/Aggr.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/relational/Attribute.hpp
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/relational/Aggr.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/relational/Attribute.hpp

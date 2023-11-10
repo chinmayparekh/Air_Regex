@@ -1,10 +1,10 @@
 CMakeFiles/AIR.dir/src/function/SumFunction.o: \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/function/SumFunction.cpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/function/SumFunction.cpp \
  /usr/include/stdc-predef.h \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/function/SumFunction.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/function/Function.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/function/../communication/Message.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/function/../communication/Window.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/function/SumFunction.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/function/Function.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/function/../communication/Message.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/function/../communication/Window.hpp \
  /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -154,7 +154,7 @@ CMakeFiles/AIR.dir/src/function/SumFunction.o: \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/function/../partitioning/Partition.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/function/../partitioning/Partition.hpp \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \

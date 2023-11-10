@@ -64,7 +64,7 @@ void EventCollector::batchProcess()
 
 void EventCollector::streamProcess(int channel)
 {
-
+	int w_id = 0;
 	D(cout << "EVENTCOLLECTOR->STREAMPROCESS [" << tag << "] @ " << rank
 		   << " IN-CHANNEL " << channel << endl;)
 
@@ -126,10 +126,11 @@ void EventCollector::streamProcess(int channel)
 					{
 						// cout << " RELEASING EVENT: join events " << res << "\tevent_time: " << eventFT.event_time
 						// 	 << "\tad_id: " << eventFT.ad_id << endl;
-						cout << "W_ID: " << eventFT.event_time / AGG_WIND_SPAN
+						cout << "W_ID: " << w_id
 							 << " RANK: " << rank << " " << res << endl;
 						res = 0;
 						end_time = curr_time;
+						w_id++;
 						// cout << "New window end time -" << end_time << endl;
 					}
 					i++;

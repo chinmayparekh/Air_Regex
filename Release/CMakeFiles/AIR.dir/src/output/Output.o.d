@@ -1,8 +1,8 @@
 CMakeFiles/AIR.dir/src/output/Output.o: \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/output/Output.cpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/output/Output.cpp \
  /usr/include/stdc-predef.h \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/output/Output.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/output/../communication/Window.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/output/Output.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/output/../communication/Window.hpp \
  /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \

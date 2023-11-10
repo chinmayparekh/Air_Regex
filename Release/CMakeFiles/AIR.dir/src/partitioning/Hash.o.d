@@ -1,8 +1,8 @@
 CMakeFiles/AIR.dir/src/partitioning/Hash.o: \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/partitioning/Hash.cpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/partitioning/Hash.cpp \
  /usr/include/stdc-predef.h \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/partitioning/../configuration/HashConfig.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/partitioning/Hash.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/partitioning/../configuration/HashConfig.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/partitioning/Hash.hpp \
  /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \

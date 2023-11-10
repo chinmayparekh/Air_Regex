@@ -1,5 +1,5 @@
 CMakeFiles/AIR.dir/src/main/main.o: \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/main.cpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/main.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/11/cstdlib \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -152,9 +152,9 @@ CMakeFiles/AIR.dir/src/main/main.o: \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/MapReduce.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../dataflow/Dataflow.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../dataflow/Vertex.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/MapReduce.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../dataflow/Dataflow.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../dataflow/Vertex.hpp \
  /usr/include/c++/11/list /usr/include/c++/11/bits/stl_list.h \
  /usr/include/c++/11/bits/allocated_ptr.h \
  /usr/include/c++/11/ext/aligned_buffer.h \
@@ -163,43 +163,43 @@ CMakeFiles/AIR.dir/src/main/main.o: \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../dataflow/../communication/Message.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../dataflow/../communication/Window.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../dataflow/../function/Function.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../dataflow/../function/../communication/Message.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../dataflow/../function/../partitioning/Partition.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../dataflow/../partitioning/Partition.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../dataflow/../serialization/Serialization.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../dataflow/../serialization/../communication/Message.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../dataflow/../serialization/../communication/Window.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../dataflow/../serialization/../partitioning/Partition.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/StreamingTest.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/TPCH.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../collector/RowCollector.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../collector/../dataflow/Vertex.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../collector/../relational/Schema.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../collector/../relational/Attribute.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../connector/PartRowConnector.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../connector/../dataflow/Vertex.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../connector/../input/FileInput.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../dataflow/../communication/Message.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../dataflow/../communication/Window.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../dataflow/../function/Function.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../dataflow/../function/../communication/Message.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../dataflow/../function/../partitioning/Partition.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../dataflow/../partitioning/Partition.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../dataflow/../serialization/Serialization.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../dataflow/../serialization/../communication/Message.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../dataflow/../serialization/../communication/Window.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../dataflow/../serialization/../partitioning/Partition.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/StreamingTest.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/TPCH.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../collector/RowCollector.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../collector/../dataflow/Vertex.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../collector/../relational/Schema.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../collector/../relational/Attribute.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../connector/PartRowConnector.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../connector/../dataflow/Vertex.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../connector/../input/FileInput.hpp \
  /usr/include/c++/11/fstream /usr/include/c++/11/bits/codecvt.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
  /usr/include/c++/11/bits/fstream.tcc \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../connector/../input/Input.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../connector/../input/../communication/Window.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../connector/../input/../communication/Message.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../connector/../relational/Schema.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../connector/RowConnector.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../relational/Schema.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../relational/SortAggregation.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../relational/Aggr.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../relational/Attribute.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../relational/Cond.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../relational/Relation.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../relational/Schema.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../relational/../communication/Window.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../relational/../serialization/Serialization.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../connector/../input/Input.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../connector/../input/../communication/Window.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../connector/../input/../communication/Message.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../connector/../relational/Schema.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../connector/RowConnector.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../relational/Schema.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../relational/SortAggregation.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../relational/Aggr.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../relational/Attribute.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../relational/Cond.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../relational/Relation.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../relational/Schema.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../relational/../communication/Window.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../relational/../serialization/Serialization.hpp \
  /usr/include/c++/11/cstring /usr/include/string.h /usr/include/strings.h \
  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
@@ -210,8 +210,8 @@ CMakeFiles/AIR.dir/src/main/main.o: \
  /usr/include/c++/11/bits/stl_heap.h \
  /usr/include/c++/11/bits/stl_tempbuf.h \
  /usr/include/c++/11/bits/uniform_int_dist.h \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../relational/../dataflow/Vertex.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/../relational/SortMergeJoin.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/WinAgg.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/YSB.hpp \
- /home/chinmay/chin/semester7/sds/assignment3/Air_final/AIR/src/main/../usecases/YSB_m.hpp
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../relational/../dataflow/Vertex.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/../relational/SortMergeJoin.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/WinAgg.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/YSB.hpp \
+ /home/chinmay/chin/semester7/sds/assignment3/AIR/src/main/../usecases/YSB_m.hpp
