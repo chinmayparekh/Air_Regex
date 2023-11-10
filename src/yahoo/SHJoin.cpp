@@ -87,7 +87,7 @@ void SHJoin::batchProcess()
 void SHJoin::streamProcess(int channel)
 {
 	long int res = 0;
-	long int temp = 0;
+	// long int temp = 0;
 	time_t start_time = time(0);
 	time_t end_time = start_time + 1;
 	// cout << "Start time in join = " << start_time << " " << end_time << endl;
@@ -157,25 +157,14 @@ void SHJoin::streamProcess(int channel)
 			int i = 0, j = 0;
 			while (i < event_count)
 			{
-				res++;
+				// res++;
 				sede.YSBdeserializeFT(inMessage, &eventFT,
 									  offset + (i * sizeof(EventFT)));
-				time_t curr_time = time(0);
-				// cout << "Current time " << curr_time << " with time diff = " << difftime(curr_time, end_time) << endl;
-				if (curr_time - end_time >= 10)
-				{
-					// cout << " RELEASING EVENT: join events " << res << "\tevent_time: " << eventFT.event_time
-					// 	 << "\tad_id: " << eventFT.ad_id << endl;
-					cout << "W_ID: " << eventFT.event_time / AGG_WIND_SPAN
-						 << " RANK: " << rank <<" " << res << endl;
-					res = 0;
-					end_time = curr_time;
-					// cout << "New window end time -" << end_time << endl;
-				}
+				sede.YSBserializeFT(&eventFT, outMessage);
 
 				i++;
 			}
-			temp++;
+			// temp++;
 			// cout<<"Total = "<<temp<<endl;
 			// temp += event_count;
 			// cout << "W_ID: " << eventFT.event_time / AGG_WIND_SPAN
@@ -184,6 +173,49 @@ void SHJoin::streamProcess(int channel)
 			// temp=0;
 
 			// Replicate data to all subsequent vertices, do not actually reshard the data here
+			int n = 0, listenerBuffer_offset = 0;
+			for (vector<Vertex *>::iterator v = next.begin(); v != next.end();
+				 ++v)
+			{
+
+				int idx = n * worldSize + 0; // always keep workload on same rank
+
+				if (PIPELINE)
+				{
+					idx = rank; // calculating the index of the buffer at the listener thread
+					// Pipeline mode: immediately copy message into next operator's queue
+					pthread_mutex_lock(&(*v)->listenerMutexes[idx]);
+					(*v)->inMessages[idx].push_back(outMessage);
+
+					D(cout << "SHJOIN->PIPELINE MESSAGE [" << tag << "] #" << c
+						   << " @ " << rank << " IN-CHANNEL " << channel
+						   << " OUT-CHANNEL " << idx << " SIZE "
+						   << outMessage->size << " CAP "
+						   << outMessage->capacity << endl;)
+
+					pthread_cond_signal(&(*v)->listenerCondVars[idx]);
+					pthread_mutex_unlock(&(*v)->listenerMutexes[idx]);
+				}
+				else
+				{
+
+					// Normal mode: synchronize on outgoing message channel & send message
+					pthread_mutex_lock(&senderMutexes[idx]);
+					outMessages[idx].push_back(outMessage);
+
+					D(cout << "SHJOIN->PUSHBACK MESSAGE [" << tag << "] #" << c
+						   << " @ " << rank << " IN-CHANNEL " << channel
+						   << " OUT-CHANNEL " << idx << " SIZE "
+						   << outMessage->size << " CAP "
+						   << outMessage->capacity << endl;)
+
+					pthread_cond_signal(&senderCondVars[idx]);
+					pthread_mutex_unlock(&senderMutexes[idx]);
+				}
+
+				n++;
+				break; // only one successor node allowed!
+			}
 
 			delete inMessage;
 			c++;

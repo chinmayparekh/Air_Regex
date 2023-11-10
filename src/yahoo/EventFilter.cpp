@@ -180,7 +180,7 @@ void EventFilter::streamProcess(int channel)
 				 ++v)
 			{
 
-				int idx = n * worldSize + rank; // always keep workload on same rank
+				int idx = n * worldSize + 0; // always keep workload on same rank
 
 				if (PIPELINE)
 				{

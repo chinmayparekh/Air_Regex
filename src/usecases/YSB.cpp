@@ -54,11 +54,11 @@ YSB::YSB(unsigned long throughput, string pattern) :
 	join = new SHJoin(3, rank, worldSize);
 	// par_aggregate = new PartialAggregator(4, rank, worldSize);
 	// full_aggregate = new FullAggregator(3, rank, worldSize);
-	// collector = new EventCollector(6, rank, worldSize);
+	collector = new EventCollector(4, rank, worldSize);
 
 	addLink(generator, filter);
 	addLink(filter, join);
-	// addLink(join, par_aggregate);
+	addLink(join, collector);
 	// addLink(par_aggregate, full_aggregate);
 	// addLink(full_aggregate, collector);
 	// addLink(filter, full_aggregate);
@@ -68,7 +68,7 @@ YSB::YSB(unsigned long throughput, string pattern) :
 	join->initialize();
 	// par_aggregate->initialize();
 	// full_aggregate->initialize();
-	// collector->initialize();
+	collector->initialize();
 }
 
 YSB::~YSB() {
@@ -78,6 +78,6 @@ YSB::~YSB() {
 	delete join;
 	// delete par_aggregate;
 	// delete full_aggregate;
-	// delete collector;
+	delete collector;
 }
 

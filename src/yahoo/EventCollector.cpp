@@ -35,11 +35,10 @@
 #include "../serialization/Serialization.hpp"
 #include "EventCollector.hpp"
 
-
 using namespace std;
 
-EventCollector::EventCollector(int tag, int rank, int worldSize) :
-		Vertex(tag, rank, worldSize) {
+EventCollector::EventCollector(int tag, int rank, int worldSize) : Vertex(tag, rank, worldSize)
+{
 
 	// Global stats
 	sum_latency = 0;
@@ -47,44 +46,52 @@ EventCollector::EventCollector(int tag, int rank, int worldSize) :
 	num_messages = 0;
 
 	S_CHECK(if (rank == 0) {
-				datafile.open("Data/results"+to_string(rank)+".tsv");
+		datafile.open("Data/results" + to_string(rank) + ".tsv");
 	})
 
 	D(cout << "EVENTCOLLECTOR [" << tag << "] CREATED @ " << rank << endl;)
 }
 
-EventCollector::~EventCollector() {
+EventCollector::~EventCollector()
+{
 	D(cout << "EVENTCOLLECTOR [" << tag << "] DELETED @ " << rank << endl;)
 }
 
-void EventCollector::batchProcess() {
+void EventCollector::batchProcess()
+{
 	D(cout << "EVENTCOLLECTOR->BATCHPROCESS [" << tag << "] @ " << rank << endl;)
 }
 
-void EventCollector::streamProcess(int channel) {
-
+void EventCollector::streamProcess(int channel)
+{
 
 	D(cout << "EVENTCOLLECTOR->STREAMPROCESS [" << tag << "] @ " << rank
-			<< " IN-CHANNEL " << channel << endl;)
+		   << " IN-CHANNEL " << channel << endl;)
 
-	if (rank == 0) {
+	if (rank == 0)
+	{
+		long int res = 0;
+		time_t start_time = time(0);
+		time_t end_time = start_time + 1;
 
-		Message* inMessage;
-		list<Message*>* tmpMessages = new list<Message*>();
+		Message *inMessage;
+		list<Message *> *tmpMessages = new list<Message *>();
 		Serialization sede;
 
 		EventPC eventPC;
-
+		EventFT eventFT;
 		int c = 0;
-		while (ALIVE) {
+		while (ALIVE)
+		{
 
 			pthread_mutex_lock(&listenerMutexes[channel]);
 
 			while (inMessages[channel].empty())
 				pthread_cond_wait(&listenerCondVars[channel],
-						&listenerMutexes[channel]);
+								  &listenerMutexes[channel]);
 
-			while (!inMessages[channel].empty()) {
+			while (!inMessages[channel].empty())
+			{
 				inMessage = inMessages[channel].front();
 				inMessages[channel].pop_front();
 				tmpMessages->push_back(inMessage);
@@ -92,42 +99,48 @@ void EventCollector::streamProcess(int channel) {
 
 			pthread_mutex_unlock(&listenerMutexes[channel]);
 
-			while (!tmpMessages->empty()) {
+			while (!tmpMessages->empty())
+			{
 
 				inMessage = tmpMessages->front();
 				tmpMessages->pop_front();
 
 				D(cout << "EVENTCOLLECTOR->POP MESSAGE: TAG [" << tag << "] @ "
-						<< rank << " CHANNEL " << channel << " BUFFER "
-						<< inMessage->size << endl;)
+					   << rank << " CHANNEL " << channel << " BUFFER "
+					   << inMessage->size << endl;)
 
-				int event_count = inMessage->size / sizeof(EventPC);
-				//cout << "EVENT_COUNT: " << event_count << endl;
+				int event_count = inMessage->size / sizeof(EventFT);
+				// cout << "EVENT_COUNT: " << event_count << endl;
 
 				int i = 0, count = 0;
-				while (i < event_count) {
-					sede.YSBdeserializePC(inMessage, &eventPC,
-							i * sizeof(EventPC));
-					sum_latency += eventPC.latency;
-					count += eventPC.count;
-//					sede.YSBprintPC(&eventPC);
-					S_CHECK(
-										datafile
-												<< eventPC.WID << "\t"
-												<< eventPC.c_id << "\t"
-												<< eventPC.count
-												<<endl;
-
-									)
+				while (i < event_count)
+				{
+					res++;
+					sede.YSBdeserializeFT(inMessage, &eventFT,
+										  i * sizeof(EventFT));
+					// sum_latency += eventPC.latency;
+					// count += eventPC.count;
+					//					sede.YSBprintPC(&eventPC);
+					time_t curr_time = time(0);
+					if (curr_time - end_time >= 10)
+					{
+						// cout << " RELEASING EVENT: join events " << res << "\tevent_time: " << eventFT.event_time
+						// 	 << "\tad_id: " << eventFT.ad_id << endl;
+						cout << "W_ID: " << eventFT.event_time / AGG_WIND_SPAN
+							 << " RANK: " << rank << " " << res << endl;
+						res = 0;
+						end_time = curr_time;
+						// cout << "New window end time -" << end_time << endl;
+					}
 					i++;
 				}
-				sum_counts += event_count; // count of distinct c_id's processed
-				num_messages++;
+				// sum_counts += event_count; // count of distinct c_id's processed
+				// num_messages++;
 
-				cout << "\n  #" << num_messages << " COUNT: " << count
-						<< "\tAVG_LATENCY: " << (sum_latency / sum_counts)
-						<< "\tN=" << event_count << "\n" << endl;
-
+				// cout << "\n  #" << num_messages << " COUNT: " << count
+				// 	 << "\tAVG_LATENCY: " << (sum_latency / sum_counts)
+				// 	 << "\tN=" << event_count << "\n"
+				// 	 << endl;
 
 				delete inMessage; // delete message from incoming queue
 				c++;
